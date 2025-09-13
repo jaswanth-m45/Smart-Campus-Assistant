@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Campus Assistant — Decorative Prototype</title>
+  <style>
+    /* --- Theme / Utility --- */
+    :root{
+      --bg:#0d0f1a;
+      --card:#12182a;
+      --muted:#a9b4d0;
+      --accent1:#9333ea; /* purple */
+      --accent2:#14b8a6; /* teal */
+      --accent3:#f59e0b; /* amber */
+      --accent4:#ef4444; /* red */
+      --radius:16px;
+      --maxw:1240px;
+      font-family:'Poppins', sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100vh;background:radial-gradient(circle at top,var(--bg) 40%,#05070f 100%);color:#e6eef8;line-height:1.5}
+    a{text-decoration:none;color:inherit}
+
+    /* Animated gradient background */
+    body::before{
+      content:"";
+      position:fixed;inset:0;
+      background:linear-gradient(130deg,var(--accent1),var(--accent2),var(--accent3),var(--accent4));
+      background-size:400% 400%;
+      animation:moveBg 18s ease infinite;
+      opacity:0.08;
+      z-index:-1;
+    }
+    @keyframes moveBg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    .wrap{max-width:var(--maxw);margin:auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:60px;height:60px;border-radius:20px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:20px;box-shadow:0 6px 25px rgba(0,0,0,0.5)}
+    nav{display:flex;gap:16px}
+    nav a{padding:10px 16px;border-radius:12px;color:var(--muted);font-weight:600;transition:.3s}
+    nav a:hover{background:rgba(255,255,255,0.08);color:#fff;transform:translateY(-2px)}
+
+    .hero{padding:40px 0;text-align:center}
+    .hero h1{font-size:34px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent;animation:flicker 3s infinite alternate}
+    @keyframes flicker{from{opacity:0.95}to{opacity:1}}
+    .hero p{color:var(--muted);max-width:700px;margin:14px auto;font-size:18px}
+    .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:12px 18px;border-radius:14px;border:0;color:white;font-weight:700;cursor:pointer;transition:.3s}
+    .btn:hover{transform:scale(1.05)}
+
+    /* Section cards */
+    section{margin:40px 0}
+    .section-title{text-align:center;font-size:28px;font-weight:700;margin-bottom:20px;color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border-radius:var(--radius);padding:20px;box-shadow:0 8px 25px rgba(0,0,0,0.6);backdrop-filter:blur(6px);transition:.3s}
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 35px rgba(0,0,0,0.7)}
+    .card h3{margin-bottom:8px;color:#fff}
+    .card p{color:var(--muted);font-size:14px}
+
+    /* Chat box */
+    .chat{background:linear-gradient(135deg,rgba(147,51,234,0.1),rgba(20,184,166,0.1));padding:20px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.7)}
+    .messages{height:200px;overflow-y:auto;padding:10px;background:rgba(255,255,255,0.02);border-radius:10px;margin-bottom:10px}
+    .input{display:flex;gap:8px}
+    .input input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:white}
+
+    footer{text-align:center;color:var(--muted);font-size:14px;margin-top:50px;padding:20px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SC</div>
+        <div>
+          <div style="font-weight:800;font-size:18px">Smart Campus Assistant</div>
+          <div style="font-size:13px;color:var(--muted)">Your daily companion for campus life</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#nav">Navigation</a>
+        <a href="#academics">Academics</a>
+        <a href="#services">Services</a>
+        <a href="#community">Community</a>
+        <a href="#assistant">Assistant</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Campus Made Smarter</h1>
+      <p>Navigate with ease, track academics, access services, and get instant AI-powered help — all in one decorative, engaging platform.</p>
+      <button class="btn">Get Started</button>
+    </section>
+
+    <section id="nav">
+      <div class="section-title">Navigation & Wayfinding</div>
+      <div class="grid">
+        <div class="card"><h3>Interactive Maps</h3><p>Real-time navigation across campus with AR-powered routes.</p></div>
+        <div class="card"><h3>Indoor Navigation</h3><p>Find rooms and labs inside large buildings effortlessly.</p></div>
+        <div class="card"><h3>Accessibility Routes</h3><p>Wheelchair-friendly paths, elevators, and ramps included.</p></div>
+        <div class="card"><h3>Find Nearest</h3><p>Locate restrooms, fountains, printers, and study spaces instantly.</p></div>
+      </div>
+    </section>
+
+    <section id="academics">
+      <div class="section-title">Academic Integration</div>
+      <div class="grid">
+        <div class="card"><h3>Schedules</h3><p>Manage courses with room locations and professor info.</p></div>
+        <div class="card"><h3>Deadlines</h3><p>Assignment and exam reminders with smart alerts.</p></div>
+        <div class="card"><h3>GPA Tracker</h3><p>Track grades, calculate GPA, and plan ahead.</p></div>
+        <div class="card"><h3>Course Availability</h3><p>Notifications when seats open on full classes.</p></div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-title">Campus Services</div>
+      <div class="grid">
+        <div class="card"><h3>Dining</h3><p>Menus, wait times, and nutrition info in real time.</p></div>
+        <div class="card"><h3>Library</h3><p>Reserve books, find availability, and book study rooms.</p></div>
+        <div class="card"><h3>Parking & Shuttle</h3><p>Live parking availability and bus/shuttle tracking.</p></div>
+        <div class="card"><h3>Fitness</h3><p>Track gym capacity, equipment status, and wellness programs.</p></div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="section-title">Social & Community</div>
+      <div class="grid">
+        <div class="card"><h3>Study Groups</h3><p>Find and organize peers to collaborate on courses.</p></div>
+        <div class="card"><h3>Organizations</h3><p>Club directory with events and meeting schedules.</p></div>
+        <div class="card"><h3>Marketplace</h3><p>Buy/sell textbooks, bikes, and other campus essentials.</p></div>
+        <div class="card"><h3>Roommates</h3><p>Match with compatible roommates based on lifestyle.</p></div>
+      </div>
+    </section>
+
+    <section id="assistant">
+      <div class="section-title">AI-Powered Assistant</div>
+      <div class="chat">
+        <div class="messages" id="messages">
+          <div style="color:var(--muted)">Try asking: "When does the library close?"</div>
+        </div>
+        <div class="input">
+          <input id="query" placeholder="Ask me anything about campus..."/>
+          <button class="btn" id="send">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Smart Campus Assistant — Decorative Prototype
+    </footer>
+  </div>
+
+  <script>
+    const messages=document.getElementById('messages');
+    const query=document.getElementById('query');
+    const send=document.getElementById('send');
+
+    function addMsg(who,text){
+      const el=document.createElement('div');
+      el.style.margin='6px 0';
+      el.innerHTML='<strong>'+who+':</strong> <span style="color:var(--muted)">'+text+'</span>';
+      messages.appendChild(el);
+      messages.scrollTop=messages.scrollHeight;
+    }
+
+    send.onclick=()=>{
+      if(!query.value.trim()) return;
+      addMsg('You',query.value);
+      setTimeout(()=>addMsg('Assistant','This is a decorative demo response for: '+query.value),700);
+      query.value='';
+    }
+  </script>
+</body>
+</html>
